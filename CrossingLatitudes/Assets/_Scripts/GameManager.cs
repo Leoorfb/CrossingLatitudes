@@ -16,7 +16,7 @@ public class GameManager : MonoBehaviour
         for (int i = 0; i < startDeckSize; i++)
         {
             CardData data = cardDatas[Random.Range(0, cardDatas.Count)];
-            Card card = new Card(data);
+            Card card = new(data);
             deck.Add(card);
         }
     }
