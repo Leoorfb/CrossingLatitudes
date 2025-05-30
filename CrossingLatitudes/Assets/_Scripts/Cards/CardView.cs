@@ -20,7 +20,14 @@ public class CardView : MonoBehaviour
         cardImage.sprite = card.sprite;
         title.text = card.title;
         cost.text = card.cost.ToString();
-        description.text = card.effect.ToString();
+
+        string desc = "";
+        foreach (var effect in card.effects)
+        {
+            desc += effect.GetDescription();
+        }
+
+        description.text = desc;
     }
 
     private void OnMouseDown()

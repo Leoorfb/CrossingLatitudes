@@ -14,4 +14,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   <sprite>k__BackingField: {fileID: 21300000, guid: 6f1750d0dc80df446ae3570690f85f0a, type: 3}
   <cost>k__BackingField: 2
-  <effect>k__BackingField: Bloqueia 3 de dano
+  effects:
+  - rid: 5325895385987153922
+  references:
+    version: 2
+    RefIds:
+    - rid: 5325895385987153922
+      type: {class: DrawCardEffect, ns: , asm: Assembly-CSharp}
+      data:
+        amount: 1

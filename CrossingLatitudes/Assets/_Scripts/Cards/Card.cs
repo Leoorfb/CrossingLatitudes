@@ -1,9 +1,10 @@
+using System.Collections.Generic;
 using UnityEngine;
 
 public class Card
 {
     public int cost {get; set;}
-    public string effect { get; set;}
+    public List<EffectPlain> effects { get; set;}
 
     private readonly CardData cardData;
 
@@ -13,12 +14,17 @@ public class Card
     public Card(CardData cardData)
     {
         this.cardData = cardData;
-        effect = cardData.effect;
+        effects = cardData.effects;
         cost = cardData.cost;
     }
 
     public void PerformEffect()
     {
-        Debug.Log(effect + " performed - cost of " + cost);
+        Debug.Log(title + " effects:");
+
+        foreach(var effect in effects)
+        {
+            effect.Perform();
+        }
     }
 }

@@ -14,4 +14,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   <sprite>k__BackingField: {fileID: 21300000, guid: 823e50cf0ebda4a43b2ac41bfd8fd0ea, type: 3}
   <cost>k__BackingField: 3
-  <effect>k__BackingField: Causa 5 de dano de fogo
+  effects:
+  - rid: 5325895385987153920
+  references:
+    version: 2
+    RefIds:
+    - rid: 5325895385987153920
+      type: {class: DamageEffect, ns: , asm: Assembly-CSharp}
+      data:
+        damage: 5
