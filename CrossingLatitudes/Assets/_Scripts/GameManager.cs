@@ -20,6 +20,7 @@ public class GameManager : MonoBehaviour
             deck.Add(card);
         }
     }
+
     public void DrawCard()
     {
         Card drawnCard = deck[Random.Range(0, deck.Count)];

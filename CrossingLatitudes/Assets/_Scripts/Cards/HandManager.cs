@@ -6,12 +6,32 @@ using UnityEngine.Splines;
 
 public class HandManager : MonoBehaviour
 {
+    private static HandManager _instance;
+
+    public static HandManager Instance
+    {
+        get
+        {
+            if (_instance == null)
+            {
+                _instance = GameObject.FindObjectOfType<HandManager>();
+            }
+
+            return _instance;
+        }
+    }
+
     [SerializeField] private int maxHandSize;
     [SerializeField] private GameObject cardPrefab;
     [SerializeField] private SplineContainer splineContainer;
     [SerializeField] private Transform spawnPoint;
 
-    private List<GameObject> handCards = new();
+    private List<CardView> handCards = new();
+
+    void Awake()
+    {
+        _instance = this;
+    }
 
     private void Update()
     {
@@ -22,10 +42,19 @@ public class HandManager : MonoBehaviour
     private void DrawCard()
     {
         if (handCards.Count >= maxHandSize)
+        {
+            Debug.Log("MÃO CHEIA DEMAIS");
             return;
+        }
+
+        Card c = DeckManager.Instance.DrawCard();
 
         GameObject g = Instantiate(cardPrefab, spawnPoint.position, spawnPoint.rotation);
-        handCards.Add(g);
+        CardView cv = g.GetComponent<CardView>();
+
+        cv.Setup(c);
+
+        handCards.Add(cv);
 
         UpdateCardsPositions();
     }
