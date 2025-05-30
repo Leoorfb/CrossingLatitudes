@@ -4,15 +4,17 @@ using UnityEngine;
 
 public class Enemy : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
+    public EneniesScript enemyData;
+    public HealthBarScript healthBarScript;
+
+    private int currentHealth;
+
+    private void Start()
     {
-        
+        currentHealth = enemyData.maxHealth;
+        healthBarScript.SetMaxHealth(currentHealth);
+        Debug.Log(enemyData.enemyName + " spawned with " + currentHealth + " HP");
+
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
 }

@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0833674e7e5be3e45ac0990dfa031260, type: 3}
   m_Name: Goblin_Warrior_Data
   m_EditorClassIdentifier: 
-  enemyName: Goblin_Warrior
+  enemyName: Goblin Warrior
   maxHealth: 20
   damage: 5
   defense: 5
