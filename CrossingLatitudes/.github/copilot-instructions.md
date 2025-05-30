@@ -2,7 +2,7 @@
 - Project name: CrossingLatitudes
 - Unity version: Unity 2022.3.42f1
 - Active game object:
-  - Name: Play_Button
+  - Name: Skeleton
   - Tag: Untagged
-  - Layer: UI
+  - Layer: Default
 <!-- UNITY CODE ASSIST INSTRUCTIONS END -->
