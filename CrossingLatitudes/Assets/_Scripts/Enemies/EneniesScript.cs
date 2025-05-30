@@ -9,6 +9,6 @@ public class EneniesScript : ScriptableObject
     public int maxHealth;
     public int damage;
     public int defense;
-    public Sprite enemySprite;
+    public GameObject enemyPrefab;
     
 }
