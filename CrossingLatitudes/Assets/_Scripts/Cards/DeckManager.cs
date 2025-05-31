@@ -2,33 +2,12 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class DeckManager : MonoBehaviour
+public class DeckManager : Singleton<DeckManager>
 {
-    private static DeckManager _instance;
-
-    public static DeckManager Instance
-    {
-        get
-        {
-            if (_instance == null)
-            {
-                _instance = GameObject.FindObjectOfType<DeckManager>();
-            }
-
-            return _instance;
-        }
-    }
-
-
     [SerializeField] private List<CardData> initialDeckCardsData;
 
     private List<Card> deckCards;
     private List<Card> discardPileCards;
-
-    void Awake()
-    {
-        _instance = this;
-    }
 
     private void Start()
     {

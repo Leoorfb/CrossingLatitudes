@@ -4,22 +4,8 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Splines;
 
-public class HandManager : MonoBehaviour
+public class HandManager : Singleton<HandManager>
 {
-    private static HandManager _instance;
-
-    public static HandManager Instance
-    {
-        get
-        {
-            if (_instance == null)
-            {
-                _instance = GameObject.FindObjectOfType<HandManager>();
-            }
-
-            return _instance;
-        }
-    }
 
     [SerializeField] private int maxHandSize;
     [SerializeField] private GameObject cardPrefab;
@@ -28,28 +14,34 @@ public class HandManager : MonoBehaviour
 
     private List<CardView> handCards = new();
 
-    void Awake()
-    {
-        _instance = this;
-    }
-
     private void Update()
     {
-        if(Input.GetKeyDown(KeyCode.Space))
-            DrawCard();
+        if (Input.GetKeyDown(KeyCode.Space))
+        {
+            if (ActionSystem.Instance.IsPerforming) return;
+
+            DrawCardGA drawCardGA = new();
+            ActionSystem.Instance.Perform(drawCardGA);
+        }
     }
 
-    private void DrawCard()
+    private void OnEnable()
     {
+        ActionSystem.AttachPerformer<DrawCardGA>(DrawCardPerformer);
+    }
+
+    private IEnumerator DrawCardPerformer(DrawCardGA drawCardGA)
+    {
+
         if (handCards.Count >= maxHandSize)
         {
             Debug.Log("MÃO CHEIA DEMAIS");
-            return;
+            yield break;
         }
 
         Card c = DeckManager.Instance.DrawCard();
 
-        if (c == null) return;
+        if (c == null) yield break;
 
         GameObject g = Instantiate(cardPrefab, spawnPoint.position, spawnPoint.rotation);
         CardView cv = g.GetComponent<CardView>();
@@ -94,8 +86,7 @@ public class HandManager : MonoBehaviour
 
             handCards[i].transform.DOMove(splinePosition, 0.25f);
             handCards[i].transform.DOLocalRotateQuaternion(rotation, 0.25f);
-
         }
-
     }
+
 }

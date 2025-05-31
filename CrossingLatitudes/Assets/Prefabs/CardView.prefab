@@ -34,8 +34,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0.0095, y: -1.4096}
-  m_SizeDelta: {x: 2.3896, y: 1.0824}
+  m_AnchoredPosition: {x: 0.0056, y: -1.0787}
+  m_SizeDelta: {x: 1.9563, y: 1.7048}
   m_Pivot: {x: 0.5, y: 1}
 --- !u!23 &6723376954874997988
 MeshRenderer:
@@ -241,7 +241,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -0.8446, y: 0.7051}
+  m_AnchoredPosition: {x: -0.89, y: 1.2}
   m_SizeDelta: {x: 0.8802, y: 0.6116}
   m_Pivot: {x: 0.5, y: 1}
 --- !u!23 &675245979797682720
@@ -412,7 +412,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: -0.87}
+  m_AnchoredPosition: {x: 0, y: -0.625}
   m_SizeDelta: {x: 2.5695, y: 0.4747}
   m_Pivot: {x: 0.5, y: 1}
 --- !u!23 &5880355984053603705
@@ -576,7 +576,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: -0.9263, z: 0}
-  m_LocalScale: {x: 2.5602207, y: 3.275309, z: 1}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 119216770550126680}
@@ -622,8 +622,8 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: -1
-  m_Sprite: {fileID: 7482667652216324306, guid: 311925a002f4447b3a28927169b83ea6, type: 3}
-  m_Color: {r: 0.6886792, g: 0.6886792, b: 0.6886792, a: 1}
+  m_Sprite: {fileID: 21300000, guid: a83607214993d554989f8fe7146a8219, type: 3}
+  m_Color: {r: 0.8490566, g: 0.8490566, b: 0.8490566, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -659,8 +659,8 @@ Transform:
   m_GameObject: {fileID: 7831288930325453649}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.0031, y: -0.1437, z: 0}
-  m_LocalScale: {x: 0.65708405, y: 0.18811496, z: 1}
+  m_LocalPosition: {x: -0.0118, y: 0.0964, z: 0}
+  m_LocalScale: {x: 0.41198304, y: 0.17096426, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 119216770550126680}
@@ -768,6 +768,7 @@ MonoBehaviour:
   title: {fileID: 968894621495313237}
   cost: {fileID: 4894233305656806590}
   description: {fileID: 2476476520742633266}
+  wrapper: {fileID: 4861784407871785471}
 --- !u!61 &8774239551945866383
 BoxCollider2D:
   m_ObjectHideFlags: 0

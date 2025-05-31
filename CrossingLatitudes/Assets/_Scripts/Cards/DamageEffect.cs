@@ -11,8 +11,9 @@ public class DamageEffect : EffectPlain
         return ("Causou " + damage + " de dano");
     }
 
-    public override void Perform()
+    public override IEnumerator Perform()
     {
+        yield return new WaitForEndOfFrame();
         Debug.Log(GetDescription());
     }
 }

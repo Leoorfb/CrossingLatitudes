@@ -1,3 +1,4 @@
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -19,13 +20,13 @@ public class Card
         cost = cardData.cost;
     }
 
-    public void PerformEffect()
+    public IEnumerator PerformEffect()
     {
         Debug.Log(title + " effects:");
 
         foreach(var effect in effects)
         {
-            effect.Perform();
+            yield return effect.Perform();
         }
     }
 }
