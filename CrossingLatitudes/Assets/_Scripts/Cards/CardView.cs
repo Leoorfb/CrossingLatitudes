@@ -33,6 +33,9 @@ public class CardView : MonoBehaviour
     private void OnMouseDown()
     {
         card.PerformEffect();
+
+        DeckManager.Instance.OnCardPlayed(card);
+        HandManager.Instance.OnCardPlayed(this);
         Destroy(gameObject);
     }
 

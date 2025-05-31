@@ -41,25 +41,52 @@ public class DeckManager : MonoBehaviour
             deckCards.Add(card);
         }
 
+        ShuffleDeck();
     }
 
     public Card DrawCard()
     {
+        if(deckCards.Count == 0)
+        {
+            if (discardPileCards.Count == 0)
+            {
+                Debug.Log("acabou as cartas");
+                return null;
+            }
+
+            ReturnDiscard();
+        }
+
         Card c = deckCards[0];
         deckCards.RemoveAt(0);
-        discardPileCards.Add(c);
         return c;
     }
 
+    private static System.Random rng = new();
     public void ShuffleDeck()
     {
-        Debug.Log("Embaralhar não implementado");
+
+        int n = deckCards.Count;
+        while (n > 1)
+        {
+            n--;
+            int k = rng.Next(n + 1);
+            Card value = deckCards[k];
+            deckCards[k] = deckCards[n];
+            deckCards[n] = value;
+        }
     }
 
     public void ReturnDiscard()
     {
         deckCards.AddRange(discardPileCards);
         discardPileCards.Clear();
+        ShuffleDeck();
     }
 
+    public void OnCardPlayed(Card card)
+    {
+        deckCards.Remove(card);
+        discardPileCards.Add(card);
+    }
 }

@@ -30,3 +30,13 @@ public class GameManager : MonoBehaviour
     }
     
 }
+
+public enum GameState
+{
+    FightStart,
+    RoundStart,
+    PlayerTurn,
+    EnemyTurn,
+    RoundEnd,
+    FightEnd
+}

@@ -49,12 +49,28 @@ public class HandManager : MonoBehaviour
 
         Card c = DeckManager.Instance.DrawCard();
 
+        if (c == null) return;
+
         GameObject g = Instantiate(cardPrefab, spawnPoint.position, spawnPoint.rotation);
         CardView cv = g.GetComponent<CardView>();
 
         cv.Setup(c);
 
         handCards.Add(cv);
+
+        UpdateCardsPositions();
+    }
+
+    public void OnCardPlayed(CardView cardV)
+    {
+        foreach (CardView cv in handCards)
+        {
+            if (cv == cardV)
+            {
+                handCards.Remove(cv);
+                break;
+            }
+        }
 
         UpdateCardsPositions();
     }
