@@ -16,4 +16,6 @@ MonoBehaviour:
   maxHealth: 15
   damage: 1
   defense: 1
-  enemyPrefab: {fileID: 7254562013061195903, guid: 2d762c19114adf34ca2733c130dafbfb, type: 3}
+  element: 
+  enemyPrefab: {fileID: 8427709408401677797, guid: a68a0d4d752b72c4ebb34d38c95a6949, type: 3}
+  enemyItem: {fileID: 18902546713470273, guid: 07b8f776c00e9af48b1f8805eb86573e, type: 3}

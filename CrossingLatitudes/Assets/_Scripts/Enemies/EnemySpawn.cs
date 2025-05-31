@@ -11,8 +11,10 @@ public class EnemySpawnData
 }
 public class EnemySpawn : MonoBehaviour
 {
-    public EnemySpawnData[] enemies; // lista com os inimigos + prefabs e dados
+    
+    public List<EnemySpawnData> enemies;
     public Transform spawnPoint;
+
     public string spawnEnemyName;
     public GameObject spawnEnemyItem;
 
@@ -23,11 +25,20 @@ public class EnemySpawn : MonoBehaviour
 
     void SpawnRandomEnemy()
     {
-        int randomIndex = Random.Range(0, enemies.Length);
+        if (enemies.Count == 0)
+        {
+            Debug.Log("Todos os inimigos foram derrotados!");
+            return;
+        }
+
+        int randomIndex = Random.Range(0, enemies.Count);
         EnemySpawnData selectedEnemy = enemies[randomIndex];
 
         GameObject enemy = Instantiate(selectedEnemy.enemyPrefab, spawnPoint.position, Quaternion.identity) as GameObject;
         Enemy enemyScript = enemy.GetComponent<Enemy>();
+
+        enemyScript.enemyData = selectedEnemy.enemyData;
+
         spawnEnemyName = enemy.name;
         spawnEnemyItem = selectedEnemy.enemyData.enemyItem;
 
