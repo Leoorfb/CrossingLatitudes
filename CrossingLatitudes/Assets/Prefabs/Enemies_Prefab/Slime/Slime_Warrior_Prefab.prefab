@@ -10,6 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 5346789778582002844}
   - component: {fileID: 213459251510527288}
+  - component: {fileID: 6518669090773358980}
   m_Layer: 0
   m_Name: Slime_Warrior_Prefab
   m_TagString: Untagged
@@ -85,6 +86,20 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!114 &6518669090773358980
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2145912860716267303}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6b2c3a5e349e65f4e931117878e35ca7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  enemyData: {fileID: 11400000, guid: 525cb6a5c2137e34d9448c291e4c6bb9, type: 2}
+  elemento: 0
 --- !u!1 &4200970167562671861
 GameObject:
   m_ObjectHideFlags: 0

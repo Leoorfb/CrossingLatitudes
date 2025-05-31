@@ -94,6 +94,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4707379314541464090}
   - component: {fileID: 2943121381525258933}
+  - component: {fileID: -6436841517451000270}
   m_Layer: 0
   m_Name: Goblin_Warrior_Prefab
   m_TagString: Untagged
@@ -169,3 +170,18 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!114 &-6436841517451000270
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7304533059721413042}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6b2c3a5e349e65f4e931117878e35ca7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  enemyData: {fileID: 11400000, guid: a094168baf41a2842afb0854972f41ec, type: 2}
+  elemento: 0
+  healthBarScript: {fileID: 0}
