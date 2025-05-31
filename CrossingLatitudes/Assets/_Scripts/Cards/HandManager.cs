@@ -6,40 +6,15 @@ using UnityEngine.Splines;
 
 public class HandManager : Singleton<HandManager>
 {
-
-    [SerializeField] private int maxHandSize;
     [SerializeField] private GameObject cardPrefab;
     [SerializeField] private SplineContainer splineContainer;
     [SerializeField] private Transform spawnPoint;
 
     private List<CardView> handCards = new();
 
-    private void Update()
+
+    public IEnumerator AddCard(Card c)
     {
-        if (Input.GetKeyDown(KeyCode.Space))
-        {
-            if (ActionSystem.Instance.IsPerforming) return;
-
-            DrawCardGA drawCardGA = new();
-            ActionSystem.Instance.Perform(drawCardGA);
-        }
-    }
-
-    private void OnEnable()
-    {
-        ActionSystem.AttachPerformer<DrawCardGA>(DrawCardPerformer);
-    }
-
-    private IEnumerator DrawCardPerformer(DrawCardGA drawCardGA)
-    {
-
-        if (handCards.Count >= maxHandSize)
-        {
-            Debug.Log("MÃO CHEIA DEMAIS");
-            yield break;
-        }
-
-        Card c = DeckManager.Instance.DrawCard();
 
         if (c == null) yield break;
 
@@ -72,7 +47,7 @@ public class HandManager : Singleton<HandManager>
         if (handCards.Count == 0)
             return;
 
-        float cardSpacing = 1f / maxHandSize;
+        float cardSpacing = 1f / CardSystem.Instance.maxHandSize;
         float firstCardPosition = .5f - (handCards.Count - 1) * cardSpacing / 2;
 
         Spline spline = splineContainer.Spline;

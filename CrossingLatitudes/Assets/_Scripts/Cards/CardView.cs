@@ -36,7 +36,7 @@ public class CardView : MonoBehaviour
         if (ActionSystem.Instance.IsPerforming) return;
         card.PerformEffect();
 
-        DeckManager.Instance.OnCardPlayed(card);
+        CardSystem.Instance.OnCardPlayed(card);
         HandManager.Instance.OnCardPlayed(this);
         Destroy(gameObject);
     }

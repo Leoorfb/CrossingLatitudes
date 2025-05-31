@@ -13,13 +13,17 @@ public class DrawCardEffect : EffectPlain
 
     public override IEnumerator Perform()
     {
-        DrawCardGA drawCardGA = new DrawCardGA();
-        ActionSystem.Instance.Perform(drawCardGA);
-
-        while (ActionSystem.Instance.IsPerforming)
+        DrawCardsGA drawCardGA = new DrawCardsGA(amount);
+        for (int i = 0; i < amount; i++)
         {
-            yield return new WaitForEndOfFrame();
+            ActionSystem.Instance.Perform(drawCardGA);
+
+            while (ActionSystem.Instance.IsPerforming)
+            {
+                yield return new WaitForEndOfFrame();
+            }
         }
+        
 
         Debug.Log(GetDescription());
     }
