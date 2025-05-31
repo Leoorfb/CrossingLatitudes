@@ -13,6 +13,8 @@ public class EnemySpawn : MonoBehaviour
 {
     public EnemySpawnData[] enemies; // lista com os inimigos + prefabs e dados
     public Transform spawnPoint;
+    public string spawnEnemyName;
+    public GameObject spawnEnemyItem;
 
     private void Start()
     {
@@ -26,8 +28,11 @@ public class EnemySpawn : MonoBehaviour
 
         GameObject enemy = Instantiate(selectedEnemy.enemyPrefab, spawnPoint.position, Quaternion.identity) as GameObject;
         Enemy enemyScript = enemy.GetComponent<Enemy>();
-     
+        spawnEnemyName = enemy.name;
+        spawnEnemyItem = selectedEnemy.enemyData.enemyItem;
 
-        Debug.Log("Spawned Enemy: " + selectedEnemy.enemyData.enemyName);
+        Debug.Log("Spawned Enemy: " + selectedEnemy.enemyData.enemyName + " with item: " + selectedEnemy.enemyData.enemyItem);
     }
+
+
 }
