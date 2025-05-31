@@ -37,7 +37,8 @@ public class CardView : MonoBehaviour
         card.PerformEffect();
 
         CardSystem.Instance.OnCardPlayed(card);
-        HandManager.Instance.OnCardPlayed(this);
+        // futuramente precisa virar uma ação
+        StartCoroutine(HandManager.Instance.OnCardPlayed(this));
         Destroy(gameObject);
     }
 

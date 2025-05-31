@@ -4,7 +4,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 
-[CreateAssetMenu(menuName = "CardData")]
+[CreateAssetMenu(menuName = "Data/CardData")]
 public class CardData : ScriptableObject
 {
     [field: SerializeField] public Sprite sprite { get; private set; }

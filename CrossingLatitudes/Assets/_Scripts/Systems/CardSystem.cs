@@ -10,18 +10,7 @@ public class CardSystem : Singleton<CardSystem>
     private readonly List<Card> discardPile = new();
     private readonly List<Card> handPile = new();
 
-    [SerializeField] private List<CardData> initialDeckCardsData;
 
-    private void Start()
-    {
-        foreach (var cardData in initialDeckCardsData)
-        {
-            Card card = new(cardData);
-            drawPile.Add(card);
-        }
-
-        ShuffleDeck();
-    }
     private void Update()
     {
         if (Input.GetKeyDown(KeyCode.Space))
@@ -31,6 +20,17 @@ public class CardSystem : Singleton<CardSystem>
             DrawCardsGA drawCardGA = new(1);
             ActionSystem.Instance.Perform(drawCardGA);
         }
+    }
+
+    public void Setup(List<CardData> deck)
+    {
+        foreach (var cardData in deck)
+        {
+            Card card = new(cardData);
+            drawPile.Add(card);
+        }
+
+        ShuffleDeck();
     }
 
     private void OnEnable()

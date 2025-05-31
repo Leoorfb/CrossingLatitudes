@@ -25,10 +25,10 @@ public class HandManager : Singleton<HandManager>
 
         handCards.Add(cv);
 
-        UpdateCardsPositions();
+        yield return UpdateCardsPositions(.2f);
     }
 
-    public void OnCardPlayed(CardView cardV)
+    public IEnumerator OnCardPlayed(CardView cardV)
     {
         foreach (CardView cv in handCards)
         {
@@ -39,13 +39,13 @@ public class HandManager : Singleton<HandManager>
             }
         }
 
-        UpdateCardsPositions();
+        yield return UpdateCardsPositions(0.2f);
     }
 
-    private void UpdateCardsPositions()
+    private IEnumerator UpdateCardsPositions(float duration)
     {
         if (handCards.Count == 0)
-            return;
+            yield break;
 
         float cardSpacing = 1f / CardSystem.Instance.maxHandSize;
         float firstCardPosition = .5f - (handCards.Count - 1) * cardSpacing / 2;
@@ -59,9 +59,10 @@ public class HandManager : Singleton<HandManager>
             Vector3 up = spline.EvaluateUpVector(p);
             Quaternion rotation = Quaternion.LookRotation(up, Vector3.Cross(up, forward).normalized);
 
-            handCards[i].transform.DOMove(splinePosition, 0.25f);
-            handCards[i].transform.DOLocalRotateQuaternion(rotation, 0.25f);
+            handCards[i].transform.DOMove(splinePosition, duration);
+            handCards[i].transform.DOLocalRotateQuaternion(rotation, duration);
         }
+        yield return new WaitForSeconds(duration);
     }
 
 }
