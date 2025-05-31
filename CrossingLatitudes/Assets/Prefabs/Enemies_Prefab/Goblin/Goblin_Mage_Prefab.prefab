@@ -94,7 +94,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 4624851250149825641, guid: 0f8dcb4eb5223224092be9639257f6e7, type: 3}
       propertyPath: m_Name
-      value: Goblin Variant
+      value: Goblin_Mage_Prefab
       objectReference: {fileID: 0}
     - target: {fileID: 7215847574253426625, guid: 0f8dcb4eb5223224092be9639257f6e7, type: 3}
       propertyPath: m_LocalPosition.x
@@ -136,15 +136,39 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 5623149338742618500, guid: 0f8dcb4eb5223224092be9639257f6e7, type: 3}
     m_RemovedGameObjects:
     - {fileID: 2558785880350399739, guid: 0f8dcb4eb5223224092be9639257f6e7, type: 3}
     m_AddedGameObjects:
     - targetCorrespondingSourceObject: {fileID: 7215847574253426625, guid: 0f8dcb4eb5223224092be9639257f6e7, type: 3}
       insertIndex: -1
       addedObject: {fileID: 1783220550669314923}
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 4624851250149825641, guid: 0f8dcb4eb5223224092be9639257f6e7, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 8351639657510646975}
   m_SourcePrefab: {fileID: 100100000, guid: 0f8dcb4eb5223224092be9639257f6e7, type: 3}
+--- !u!1 &724230930396300977 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 4624851250149825641, guid: 0f8dcb4eb5223224092be9639257f6e7, type: 3}
+  m_PrefabInstance: {fileID: 5341895350563953368}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &8351639657510646975
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 724230930396300977}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6b2c3a5e349e65f4e931117878e35ca7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  enemyData: {fileID: 11400000, guid: 1d2a1a9a7c9f2fb49b9ffe0b82d18989, type: 2}
+  elemento: 0
+  healthBarScript: {fileID: 0}
 --- !u!4 &3315193205859912985 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 7215847574253426625, guid: 0f8dcb4eb5223224092be9639257f6e7, type: 3}
