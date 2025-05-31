@@ -10,5 +10,6 @@ public class EneniesScript : ScriptableObject
     public int damage;
     public int defense;
     public GameObject enemyPrefab;
-    
+    public GameObject enemyItem;
 }
+
