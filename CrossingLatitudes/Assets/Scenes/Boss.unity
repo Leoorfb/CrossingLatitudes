@@ -512,6 +512,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 388380124265056143, guid: b5b0b39600bb97b40acd744fa4898804, type: 3}
+      propertyPath: playOnAwake
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 3009248115663420767, guid: b5b0b39600bb97b40acd744fa4898804, type: 3}
       propertyPath: m_Name
       value: Dragon_Fire

@@ -80,12 +80,5 @@ public class EnemySpawn : MonoBehaviour
         // Spawn do próximo inimigo
         SpawnRandomEnemy();
     }
-    void Die()
-    {
-        if (Input.GetKeyDown(KeyCode.P))
-        {
-            Destroy(gameObject);
-        }
-
-    }
+    
 }
