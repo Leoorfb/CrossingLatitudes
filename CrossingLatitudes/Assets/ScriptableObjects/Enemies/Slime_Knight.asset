@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e5b4d3a6feb5a824c94ac6bb6e573085, type: 3}
   m_Name: Slime_Knight
   m_EditorClassIdentifier: 
-  <Image>k__BackingField: {fileID: 21300000, guid: 64ffa7f08c0fb8c409355b29d01e8f61, type: 3}
+  <Image>k__BackingField: {fileID: 21300000, guid: 10f5b019288e2bf499322e3a54352932, type: 3}
   <Prefab>k__BackingField: {fileID: 2145912860716267303, guid: 4a5f1755a07468341b4232743da5e919, type: 3}
   <MaxHealth>k__BackingField: 10
   <AttackPower>k__BackingField: 2

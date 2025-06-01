@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e5b4d3a6feb5a824c94ac6bb6e573085, type: 3}
   m_Name: Skeleton_Mage
   m_EditorClassIdentifier: 
-  <Image>k__BackingField: {fileID: 21300000, guid: 8e6ab95d5e123ae4bb48b3070d9345e4, type: 3}
+  <Image>k__BackingField: {fileID: 21300000, guid: 3b86b60800fbfbd4e968fd9517d5156d, type: 3}
   <Prefab>k__BackingField: {fileID: 8972323329341224917, guid: 62cdb1e92c9e3c64dbe8e4dbf4ddeb37, type: 3}
   <MaxHealth>k__BackingField: 10
   <AttackPower>k__BackingField: 4

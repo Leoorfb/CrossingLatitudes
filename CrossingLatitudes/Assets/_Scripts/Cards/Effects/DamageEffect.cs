@@ -8,7 +8,7 @@ public class DamageEffect : EffectPlain
 
     public override string GetDescription()
     {
-        return ("Causou " + damage + " de dano");
+        return ("Deals " + damage + " damage. ");
     }
 
     public override GameAction GetGameAction()

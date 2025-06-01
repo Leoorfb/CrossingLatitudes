@@ -8,7 +8,7 @@ public class AddDefenseEffect : EffectPlain
 
     public override string GetDescription()
     {
-        return ("Adiciona " + amount + " de defesa. ");
+        return ("Add" + amount + " to your defense. ");
     }
 
     public override GameAction GetGameAction()

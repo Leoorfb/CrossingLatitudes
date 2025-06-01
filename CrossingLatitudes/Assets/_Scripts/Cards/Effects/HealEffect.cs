@@ -8,7 +8,7 @@ public class HealEffect : EffectPlain
 
     public override string GetDescription()
     {
-        return ("Cura " + amount + " de PV. ");
+        return ("Heal " + amount + " Hit Points. ");
     }
 
     public override GameAction GetGameAction()

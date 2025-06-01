@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e5b4d3a6feb5a824c94ac6bb6e573085, type: 3}
   m_Name: Slime_Barbarian
   m_EditorClassIdentifier: 
-  <Image>k__BackingField: {fileID: 21300000, guid: 64ffa7f08c0fb8c409355b29d01e8f61, type: 3}
+  <Image>k__BackingField: {fileID: 21300000, guid: ec9a142cbe7948243bc279e337011acd, type: 3}
   <Prefab>k__BackingField: {fileID: 7542545401146870421, guid: 8d242d8942c3c2f42836de2727b17baa, type: 3}
   <MaxHealth>k__BackingField: 8
   <AttackPower>k__BackingField: 4

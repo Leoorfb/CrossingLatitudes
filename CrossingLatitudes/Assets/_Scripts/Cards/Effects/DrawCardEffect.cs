@@ -8,7 +8,7 @@ public class DrawCardEffect : EffectPlain
 
     public override string GetDescription()
     {
-        return("Compra " + amount + " cartas. ");
+        return("Draw " + amount + " cards. ");
     }
 
     public override GameAction GetGameAction()
