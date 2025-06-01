@@ -15,7 +15,7 @@ MonoBehaviour:
   <Image>k__BackingField: {fileID: 0}
   <Prefab>k__BackingField: {fileID: 8427709408401677797, guid: a68a0d4d752b72c4ebb34d38c95a6949, type: 3}
   <MaxHealth>k__BackingField: 20
-  <AttackPower>k__BackingField: 5
-  <DefensePower>k__BackingField: 5
+  <AttackPower>k__BackingField: 2
+  <DefensePower>k__BackingField: 2
   rewardCard: {fileID: 11400000, guid: 44d6cdcc55b66d847a8c6893b602ea35, type: 2}
   element: 0
