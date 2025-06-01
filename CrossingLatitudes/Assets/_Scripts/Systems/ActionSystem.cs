@@ -14,7 +14,12 @@ public class ActionSystem : Singleton<ActionSystem>
 
     public void Perform(GameAction action, System.Action OnPerformFinished = null)
     {
-        if (IsPerforming ) return;
+        if (IsPerforming)
+        {
+            Debug.Log("Já ta perfomando uma ação");
+            return;
+        }
+
 
         IsPerforming = true;
 
@@ -27,30 +32,36 @@ public class ActionSystem : Singleton<ActionSystem>
 
     public void AddReaction(GameAction action)
     {
+        Debug.Log("Adicionou reação");
         reactions?.Add(action);
     }
 
     private IEnumerator PerformReactions()
     {
+        Debug.Log("tentou performar reação");
         if (reactions == null)
             yield break;
 
         foreach (var reaction in reactions)
         {
+            Debug.Log("performou reação");
             yield return Flow(reaction);
         }
     }
 
     private IEnumerator Flow(GameAction action, Action OnFlowFinished = null)
     {
+        Debug.Log("performa pre ação");
         reactions = action.PreReactions;
         PerformSubscribers(action, preSubs);
         yield return PerformReactions();
 
+        Debug.Log("performa ação");
         reactions = action.PerformReactions;
         yield return PerformPerformer(action);
         yield return PerformReactions();
 
+        Debug.Log("performa pos ação");
         reactions = action.PostReactions;
         PerformSubscribers(action, postSubs);
         yield return PerformReactions();
@@ -113,7 +124,7 @@ public class ActionSystem : Singleton<ActionSystem>
             subs[typeof(T)].Add(wrappedReaction);
         }
     }
-
+        
     public static void UnsubscribeReaction<T>(Action<T> reaction, ReactionTiming timing) where T : GameAction
     {
         Dictionary<Type, List<Action<GameAction>>> subs = timing == ReactionTiming.PRE ? preSubs : postSubs;

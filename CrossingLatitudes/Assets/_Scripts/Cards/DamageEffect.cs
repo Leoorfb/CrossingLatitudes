@@ -11,9 +11,9 @@ public class DamageEffect : EffectPlain
         return ("Causou " + damage + " de dano");
     }
 
-    public override IEnumerator Perform()
+    public override GameAction GetGameAction()
     {
-        yield return new WaitForEndOfFrame();
-        Debug.Log(GetDescription());
+        DrawCardsGA drawCardGA = new(0);
+        return drawCardGA;
     }
 }

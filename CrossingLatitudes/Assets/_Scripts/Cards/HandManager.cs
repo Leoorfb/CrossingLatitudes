@@ -13,6 +13,21 @@ public class HandManager : Singleton<HandManager>
     private List<CardView> handCards = new();
 
 
+    public CardView RemoveCard(Card c)
+    {
+        foreach (CardView cardV in handCards)
+        {
+            if (cardV.card == c)
+            {
+                handCards.Remove(cardV);
+                StartCoroutine(UpdateCardsPositions(0.2f));
+                return cardV;
+            }
+        }
+
+        return null;
+    }
+
     public IEnumerator AddCard(Card c)
     {
 

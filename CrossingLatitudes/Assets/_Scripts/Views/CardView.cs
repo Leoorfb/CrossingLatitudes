@@ -11,8 +11,12 @@ public class CardView : MonoBehaviour
     [SerializeField] private TMP_Text cost;
     [SerializeField] private TMP_Text description;
     [SerializeField] private GameObject wrapper;
+    [SerializeField] private LayerMask dropLayer;
 
-    private Card card;
+    public Card card { get; private set; }
+
+    private Vector3 dragStartPosition;
+    private Quaternion dragStartRotation;
 
     public void Setup(Card card)
     {
@@ -33,17 +37,56 @@ public class CardView : MonoBehaviour
 
     private void OnMouseDown()
     {
-        if (ActionSystem.Instance.IsPerforming) return;
-        card.PerformEffect();
+        if (!Interactions.Instance.PlayerCanInteract())
+            return;
 
-        CardSystem.Instance.OnCardPlayed(card);
-        // futuramente precisa virar uma ação
-        StartCoroutine(HandManager.Instance.OnCardPlayed(this));
-        Destroy(gameObject);
+        Interactions.Instance.PlayerIsDragging = true;
+        
+        wrapper.SetActive(true);
+        CardViewHoverSystem.Instance.Hide();
+
+        dragStartPosition = transform.position;
+        dragStartRotation = transform.rotation;
+        transform.rotation = Quaternion.Euler(0, 0, 0);
+        transform.position = MouseUtil.GetMousePositionInWorldSpace(-1);
+    }
+
+    private void OnMouseDrag()
+    {
+        if (!Interactions.Instance.PlayerCanInteract())
+            return;
+
+        transform.position = MouseUtil.GetMousePositionInWorldSpace(-1);
+    }
+
+    private void OnMouseUp()
+    {
+        if (!Interactions.Instance.PlayerCanInteract())
+            return;
+
+        if (Physics.Raycast(transform.position, Vector3.forward, out RaycastHit hit, 10f, dropLayer))
+        {
+            Debug.Log("usou");
+
+            PlayCardGA playcardGA = new(card);
+            ActionSystem.Instance.Perform(playcardGA);
+        }
+        else
+        {
+            Debug.Log("cancelou");
+
+            transform.position = dragStartPosition;
+            transform.rotation = dragStartRotation;
+        }
+        
+
+        Interactions.Instance.PlayerIsDragging = false;
     }
 
     private void OnMouseEnter()
     {
+        if (!Interactions.Instance.PlayerCanHover())
+            return;
         wrapper.SetActive(false);
         Vector3 pos = new(transform.position.x, -2, 0);
         CardViewHoverSystem.Instance.Show(card, pos);
@@ -51,7 +94,10 @@ public class CardView : MonoBehaviour
 
     private void OnMouseExit()
     {
+        if (!Interactions.Instance.PlayerCanHover())
+            return;
         CardViewHoverSystem.Instance.Hide();
         wrapper.SetActive(true);
     }
+
 }

@@ -1,3 +1,4 @@
+using DG.Tweening;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -6,6 +7,10 @@ public class CardSystem : Singleton<CardSystem>
 {
     [SerializeField] public int maxHandSize;
     [SerializeField] private HandManager handManager;
+
+    [SerializeField] Transform drawCardPosition;
+    [SerializeField] Transform discardCardPosition;
+
     private readonly List<Card> drawPile = new();
     private readonly List<Card> discardPile = new();
     private readonly List<Card> handPile = new();
@@ -36,11 +41,15 @@ public class CardSystem : Singleton<CardSystem>
     private void OnEnable()
     {
         ActionSystem.AttachPerformer<DrawCardsGA>(DrawCardPerformer);
+        ActionSystem.AttachPerformer<PlayCardGA>(PlayCardPerformer);
+
     }
 
     private void OnDisable()
     {
         ActionSystem.DetachPerformer<DrawCardsGA>();
+        ActionSystem.DetachPerformer<PlayCardGA>();
+
     }
 
     // Performers
@@ -76,6 +85,26 @@ public class CardSystem : Singleton<CardSystem>
         yield return handManager.AddCard(c);
     }
 
+    private IEnumerator PlayCardPerformer(PlayCardGA playCardGA)
+    {
+        handPile.Remove(playCardGA.Card);
+        discardPile.Add(playCardGA.Card);
+
+        CardView cardV = HandManager.Instance.RemoveCard(playCardGA.Card);
+
+        yield return DiscardCard(cardV);
+
+        foreach(EffectPlain effect in playCardGA.Card.effects)
+        {
+            Debug.Log("efeito da carta " + effect.GetDescription());
+            PerformEffectGA performEffectGA = new(effect);
+            ActionSystem.Instance.AddReaction(performEffectGA);
+        }
+
+        //yield return playCardGA.Card.PerformEffect();
+
+    }
+
     private static System.Random rng = new();
     public void ShuffleDeck()
     {
@@ -98,10 +127,12 @@ public class CardSystem : Singleton<CardSystem>
         ShuffleDeck();
     }
 
-    public void OnCardPlayed(Card card)
+    private IEnumerator DiscardCard(CardView cardView)
     {
-        drawPile.Remove(card);
-        drawPile.Add(card);
-    }
+        cardView.transform.DOScale(Vector3.zero, 0.15f);
+        Tween tween = cardView.transform.DOMove(discardCardPosition.position, 0.15f);
+        yield return tween.WaitForCompletion();
 
+        Destroy(cardView.gameObject);
+    }
 }

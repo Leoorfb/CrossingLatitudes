@@ -11,16 +11,10 @@ public class DrawCardEffect : EffectPlain
         return("Compra " + amount + " cartas. ");
     }
 
-    public override IEnumerator Perform()
+    public override GameAction GetGameAction()
     {
-        DrawCardsGA drawCardGA = new DrawCardsGA(amount);
-        
-        ActionSystem.Instance.Perform(drawCardGA);
-        while (ActionSystem.Instance.IsPerforming)
-        {
-            yield return new WaitForEndOfFrame();
-        }
-
-        Debug.Log(GetDescription());
+        Debug.Log("USOU CARTA DE COMPRAR");
+        DrawCardsGA drawCardGA = new(amount);
+        return drawCardGA;
     }
 }

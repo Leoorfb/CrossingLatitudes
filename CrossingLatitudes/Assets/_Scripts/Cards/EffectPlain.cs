@@ -5,5 +5,5 @@ public abstract class EffectPlain
 {
     public abstract string GetDescription();
 
-    public abstract IEnumerator Perform();
+    public abstract GameAction GetGameAction();
 }

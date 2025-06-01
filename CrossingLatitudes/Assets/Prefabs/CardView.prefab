@@ -769,6 +769,9 @@ MonoBehaviour:
   cost: {fileID: 4894233305656806590}
   description: {fileID: 2476476520742633266}
   wrapper: {fileID: 4861784407871785471}
+  dropLayer:
+    serializedVersion: 2
+    m_Bits: 64
 --- !u!61 &8774239551945866383
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -824,5 +827,5 @@ SortingGroup:
   m_Enabled: 1
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 1
   m_SortAtRoot: 0

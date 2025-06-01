@@ -6,7 +6,8 @@ using UnityEngine;
 public class Card
 {
     public int cost {get; set;}
-    public List<EffectPlain> effects { get; set;}
+
+    public List<EffectPlain> effects => cardData.effects;
 
     private readonly CardData cardData;
 
@@ -16,10 +17,10 @@ public class Card
     public Card(CardData cardData)
     {
         this.cardData = cardData;
-        effects = cardData.effects;
         cost = cardData.cost;
     }
 
+    /*
     public IEnumerator PerformEffect()
     {
         Debug.Log(title + " effects:");
@@ -29,4 +30,5 @@ public class Card
             yield return effect.Perform();
         }
     }
+    */
 }
