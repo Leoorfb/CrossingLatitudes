@@ -15,11 +15,11 @@ MonoBehaviour:
   <sprite>k__BackingField: {fileID: 21300000, guid: 972f426bb74140847b0d8c939d26d22f, type: 3}
   <cost>k__BackingField: 1
   <effects>k__BackingField:
-  - rid: 7374858818862710786
+  - rid: 7374858824039268354
   references:
     version: 2
     RefIds:
-    - rid: 7374858818862710786
-      type: {class: DamageEffect, ns: , asm: Assembly-CSharp}
+    - rid: 7374858824039268354
+      type: {class: AddAttackEffect, ns: , asm: Assembly-CSharp}
       data:
-        damage: 2
+        amount: 2

@@ -76,6 +76,7 @@ public class HandManager : Singleton<HandManager>
 
             handCards[i].transform.DOMove(splinePosition, duration);
             handCards[i].transform.DOLocalRotateQuaternion(rotation, duration);
+            handCards[i].setSortLayer(i+1);
         }
         yield return new WaitForSeconds(duration);
     }

@@ -14,8 +14,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   <Image>k__BackingField: {fileID: 21300000, guid: 8c48fc3fadc4181429f8edb229248cc4, type: 3}
   <MaxHealth>k__BackingField: 20
-  <AttackPower>k__BackingField: 1
-  <DefensePower>k__BackingField: 1
+  <AttackPower>k__BackingField: 0
+  <DefensePower>k__BackingField: 0
   <Deck>k__BackingField:
   - {fileID: 11400000, guid: c1445b45c0fd94648b3e0253fc6e7596, type: 2}
   - {fileID: 11400000, guid: c1445b45c0fd94648b3e0253fc6e7596, type: 2}

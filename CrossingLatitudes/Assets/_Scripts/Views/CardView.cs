@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
 using UnityEngine.EventSystems;
+using UnityEngine.Rendering;
 
 public class CardView : MonoBehaviour
 {
@@ -12,6 +13,7 @@ public class CardView : MonoBehaviour
     [SerializeField] private TMP_Text description;
     [SerializeField] private GameObject wrapper;
     [SerializeField] private LayerMask dropLayer;
+    [SerializeField] private SortingGroup sortingGroup;
 
     public Card card { get; private set; }
 
@@ -33,6 +35,11 @@ public class CardView : MonoBehaviour
         }
 
         description.text = desc;
+    }
+
+    public void setSortLayer(int layer)
+    {
+        sortingGroup.sortingOrder = layer;
     }
 
     private void OnMouseDown()
@@ -64,7 +71,8 @@ public class CardView : MonoBehaviour
         if (!Interactions.Instance.PlayerCanInteract())
             return;
 
-        if (Physics.Raycast(transform.position, Vector3.forward, out RaycastHit hit, 10f, dropLayer))
+        if (ManaSystem.Instance.HasEnoughMana(card.cost)
+            && Physics.Raycast(transform.position, Vector3.forward, out RaycastHit hit, 10f, dropLayer))
         {
             Debug.Log("usou");
 

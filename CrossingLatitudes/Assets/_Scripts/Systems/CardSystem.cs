@@ -11,10 +11,11 @@ public class CardSystem : Singleton<CardSystem>
     [SerializeField] Transform drawCardPosition;
     [SerializeField] Transform discardCardPosition;
 
-    private readonly List<Card> drawPile = new();
-    private readonly List<Card> discardPile = new();
-    private readonly List<Card> handPile = new();
+    private  List<Card> drawPile = new();
+    private  List<Card> discardPile = new();
+    private  List<Card> handPile = new();
 
+    [SerializeField] public int cardsDrawnPerTurn = 2;
 
     private void Update()
     {
@@ -42,6 +43,7 @@ public class CardSystem : Singleton<CardSystem>
     {
         ActionSystem.AttachPerformer<DrawCardsGA>(DrawCardPerformer);
         ActionSystem.AttachPerformer<PlayCardGA>(PlayCardPerformer);
+        ActionSystem.SubscribeReaction<EnemyTurnGA>(EnemyTurnPostAction, ReactionTiming.POST);
 
     }
 
@@ -49,6 +51,7 @@ public class CardSystem : Singleton<CardSystem>
     {
         ActionSystem.DetachPerformer<DrawCardsGA>();
         ActionSystem.DetachPerformer<PlayCardGA>();
+        ActionSystem.UnsubscribeReaction<EnemyTurnGA>(EnemyTurnPostAction, ReactionTiming.POST);
 
     }
 
@@ -66,6 +69,8 @@ public class CardSystem : Singleton<CardSystem>
 
             if (drawPile.Count == 0)
             {
+                Debug.Log("baralho vazio");
+
                 if (discardPile.Count == 0)
                 {
                     Debug.Log("acabou as cartas");
@@ -79,11 +84,6 @@ public class CardSystem : Singleton<CardSystem>
         }
     }
 
-    public IEnumerator DrawCard()
-    {
-        Card c = drawPile.Draw();
-        yield return handManager.AddCard(c);
-    }
 
     private IEnumerator PlayCardPerformer(PlayCardGA playCardGA)
     {
@@ -93,6 +93,9 @@ public class CardSystem : Singleton<CardSystem>
         CardView cardV = HandManager.Instance.RemoveCard(playCardGA.Card);
 
         yield return DiscardCard(cardV);
+
+        SpendManaGA spendManaGA = new(playCardGA.Card.cost);
+        ActionSystem.Instance.AddReaction(spendManaGA);
 
         foreach(EffectPlain effect in playCardGA.Card.effects)
         {
@@ -105,6 +108,22 @@ public class CardSystem : Singleton<CardSystem>
 
     }
 
+    // Reactions
+
+    private void EnemyTurnPostAction(EnemyTurnGA enemyTurnGA)
+    {
+        DrawCardsGA drawCardsGA = new(cardsDrawnPerTurn);
+        ActionSystem.Instance.AddReaction(drawCardsGA);
+    }
+
+    // Helpers
+
+    public IEnumerator DrawCard()
+    {
+        Card c = drawPile.Draw();
+        handPile.Add(c);
+        yield return handManager.AddCard(c);
+    }
     private static System.Random rng = new();
     public void ShuffleDeck()
     {
@@ -122,8 +141,10 @@ public class CardSystem : Singleton<CardSystem>
 
     public void ReturnDiscard()
     {
-        drawPile.AddRange(drawPile);
-        drawPile.Clear();
+        Debug.Log("retornou o discarte");
+
+        drawPile.AddRange(discardPile);
+        discardPile.Clear();
         ShuffleDeck();
     }
 

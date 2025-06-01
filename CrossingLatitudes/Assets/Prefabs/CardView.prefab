@@ -772,6 +772,7 @@ MonoBehaviour:
   dropLayer:
     serializedVersion: 2
     m_Bits: 64
+  sortingGroup: {fileID: 6176330580535157267}
 --- !u!61 &8774239551945866383
 BoxCollider2D:
   m_ObjectHideFlags: 0
