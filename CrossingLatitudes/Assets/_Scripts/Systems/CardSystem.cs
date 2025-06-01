@@ -28,17 +28,6 @@ public class CardSystem : Singleton<CardSystem>
         }
     }
 
-    public void Setup(List<CardData> deck)
-    {
-        foreach (var cardData in deck)
-        {
-            Card card = new(cardData);
-            drawPile.Add(card);
-        }
-
-        ShuffleDeck();
-    }
-
     private void OnEnable()
     {
         ActionSystem.AttachPerformer<DrawCardsGA>(DrawCardPerformer);
@@ -118,6 +107,27 @@ public class CardSystem : Singleton<CardSystem>
 
     // Helpers
 
+    public void Setup(List<CardData> deck)
+    {
+        foreach (var cardData in deck)
+        {
+            AddCard(cardData);
+        }
+
+        ShuffleDeck();
+    }
+
+    public void StartMatchSetup()
+    {
+        ReturnDiscard();
+    }
+
+    public void AddCard(CardData cardData)
+    {
+        Card card = new(cardData);
+        drawPile.Add(card);
+    }
+
     public IEnumerator DrawCard()
     {
         Card c = drawPile.Draw();
@@ -150,10 +160,27 @@ public class CardSystem : Singleton<CardSystem>
 
     private IEnumerator DiscardCard(CardView cardView)
     {
+        Debug.Log(cardView);
+        Debug.Log(cardView.transform);
+
         cardView.transform.DOScale(Vector3.zero, 0.15f);
         Tween tween = cardView.transform.DOMove(discardCardPosition.position, 0.15f);
         yield return tween.WaitForCompletion();
 
         Destroy(cardView.gameObject);
+    }
+
+    public IEnumerator DiscardAllCards()
+    {
+        while(handPile.Count > 0)
+        {
+            discardPile.Add(handPile[0]);
+
+            CardView cardV = HandManager.Instance.RemoveCard(handPile[0]);
+            handPile.Remove(handPile[0]);
+
+
+            yield return DiscardCard(cardV);
+        }
     }
 }

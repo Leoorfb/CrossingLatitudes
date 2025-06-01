@@ -93,6 +93,15 @@ public class UnitView : MonoBehaviour
         UpdateDefenseText();
     }
 
+    public void Heal(int healAmount)
+    {
+        CurrentHealth += healAmount;
+        if (CurrentHealth > MaxHealth)
+            CurrentHealth = MaxHealth;
+
+        UpdateHealthText();
+    }
+
     // Reactions
 
     private void EnemyTurnPostAction(EnemyTurnGA enemyTurnGA)

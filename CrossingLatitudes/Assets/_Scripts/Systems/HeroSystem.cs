@@ -10,6 +10,7 @@ public class HeroSystem : Singleton<HeroSystem>
     {
         ActionSystem.AttachPerformer<AddAttackGA>(AddAttackPerformer);
         ActionSystem.AttachPerformer<AddDefenseGA>(AddDefensePerformer);
+        ActionSystem.AttachPerformer<HealGA>(HealPerformer);
         ActionSystem.SubscribeReaction<EnemyTurnGA>(EnemyTurnPreAction, ReactionTiming.PRE);
 
     }
@@ -18,6 +19,7 @@ public class HeroSystem : Singleton<HeroSystem>
     {
         ActionSystem.DetachPerformer<AddAttackGA>();
         ActionSystem.DetachPerformer<AddDefenseGA>();
+        ActionSystem.DetachPerformer<HealGA>();
         ActionSystem.UnsubscribeReaction<EnemyTurnGA>(EnemyTurnPreAction, ReactionTiming.PRE);
 
     }
@@ -46,6 +48,12 @@ public class HeroSystem : Singleton<HeroSystem>
     private IEnumerator AddDefensePerformer(AddDefenseGA addDefenseGA)
     {
         HeroView.AddDefense(addDefenseGA.amount);
+        yield return null;
+    }
+
+    private IEnumerator HealPerformer(HealGA healGA)
+    {
+        HeroView.Heal(healGA.amount);
         yield return null;
     }
 }

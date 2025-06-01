@@ -13,13 +13,13 @@ MonoBehaviour:
   m_Name: Escudo
   m_EditorClassIdentifier: 
   <sprite>k__BackingField: {fileID: 21300000, guid: 6f1750d0dc80df446ae3570690f85f0a, type: 3}
-  <cost>k__BackingField: 2
+  <cost>k__BackingField: 1
   <effects>k__BackingField:
-  - rid: 7374858818862710787
+  - rid: 7374858824039268356
   references:
     version: 2
     RefIds:
-    - rid: 7374858818862710787
-      type: {class: DrawCardEffect, ns: , asm: Assembly-CSharp}
+    - rid: 7374858824039268356
+      type: {class: AddDefenseEffect, ns: , asm: Assembly-CSharp}
       data:
         amount: 2
