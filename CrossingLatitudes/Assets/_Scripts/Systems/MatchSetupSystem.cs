@@ -6,6 +6,7 @@ public class MatchSetupSystem : Singleton<MatchSetupSystem>
 {
     [SerializeField] private HeroData heroData;
     [SerializeField] private List<EnemyData> enemyDatas;
+    [SerializeField] private List<EnemyData> bossDatas;
 
     [SerializeField] private GameObject FightUI;
     [SerializeField] private RewardUI RewardUI;
@@ -13,10 +14,16 @@ public class MatchSetupSystem : Singleton<MatchSetupSystem>
     private Element rewardElement;
     private CardData rewardCard;
 
+    private List<EnemyData> currentEnemies = new();
+
+    private bool isBossMatch = false;
+
     private void Start()
     {
+        NewCurrentEnemy();
+
         HeroSystem.Instance.Setup(heroData);
-        EnemySystem.Instance.Setup(enemyDatas);
+        EnemySystem.Instance.Setup(currentEnemies);
         CardSystem.Instance.Setup(heroData.Deck);
 
         SetupReward(enemyDatas[0]);
@@ -45,6 +52,12 @@ public class MatchSetupSystem : Singleton<MatchSetupSystem>
 
             StartCoroutine(CardSystem.Instance.DiscardAllCards());
 
+            if (isBossMatch)
+            {
+                Debug.Log("Fim de jogo - VITORIA");
+                return;
+            }
+
             RewardUI.SetupReward(rewardCard, rewardElement);
             RewardUI.gameObject.SetActive(true);
         }
@@ -57,10 +70,12 @@ public class MatchSetupSystem : Singleton<MatchSetupSystem>
         RewardUI.gameObject.SetActive(false);
         FightUI.SetActive(true);
 
-        EnemySystem.Instance.Setup(enemyDatas);
+        NewCurrentEnemy();
+
+        EnemySystem.Instance.Setup(currentEnemies);
         CardSystem.Instance.StartMatchSetup();
 
-        SetupReward(enemyDatas[0]);
+        SetupReward(currentEnemies[0]);
 
         DrawCardsGA drawCardsGA = new(3);
         ActionSystem.Instance.Perform(drawCardsGA);
@@ -72,8 +87,21 @@ public class MatchSetupSystem : Singleton<MatchSetupSystem>
         rewardElement = enemyData.element;
     }
 
-    private EnemyData GetRandomEnemy()
+    private void NewCurrentEnemy()
     {
-        return enemyDatas[Random.Range(0, enemyDatas.Count)];
+        int randIndex;
+        currentEnemies.Clear();
+        if (enemyDatas.Count <= 0)
+        {
+            isBossMatch = true;
+            randIndex = Random.Range(0, bossDatas.Count);
+            currentEnemies.Add(bossDatas[randIndex]);
+            return;
+        }
+
+        randIndex = Random.Range(0, enemyDatas.Count);
+        currentEnemies.Add(enemyDatas[randIndex]);
+        enemyDatas.RemoveAt(randIndex);
+        return;
     }
 }
