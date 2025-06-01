@@ -1775,8 +1775,15 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   heroData: {fileID: 11400000, guid: 1f219a338b9e1b14db7e8a7576cc0c69, type: 2}
   enemyDatas:
+  - {fileID: 11400000, guid: 2580e219e905cf74fa86d26cb7af3fe6, type: 2}
   - {fileID: 11400000, guid: b94d0deb3a94718419957b3ffb78ddcd, type: 2}
+  - {fileID: 11400000, guid: d745dfecf20239a409478c8318d47d9f, type: 2}
+  - {fileID: 11400000, guid: ddf860900c6901d45b64fe92302cb9f0, type: 2}
+  - {fileID: 11400000, guid: bcce85057f58d1b449f63c21a6dbd20a, type: 2}
+  - {fileID: 11400000, guid: f6d00b8473bac9f48a5cd2e7269e4d2d, type: 2}
   - {fileID: 11400000, guid: 3c21cfc0cfb2eee4e95a8ca0e2529c98, type: 2}
+  - {fileID: 11400000, guid: 18beaab17b8f6424990fff62dff4df1e, type: 2}
+  - {fileID: 11400000, guid: 4f2f5238c178f3a4ea7fd42dee657dab, type: 2}
   bossDatas:
   - {fileID: 11400000, guid: e966a2026b41c9142be74e26dfa06bd5, type: 2}
   FightUI: {fileID: 1315187169}
