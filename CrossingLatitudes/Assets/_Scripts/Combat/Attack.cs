@@ -4,8 +4,9 @@ using UnityEngine;
 
 public class Attack : MonoBehaviour
 {
+    public EnemySpawn enemySpawn;
     public Enemy currentEnemy;
-    public AxeAttack attack;
+    
     public GameObject axePrefab;
     public Transform enemyTarget;
 
@@ -16,11 +17,19 @@ public class Attack : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.Space))
+        if (Input.GetKeyDown(KeyCode.Space) && enemySpawn.isCombatActive == true)
         {
-            SpawnAxeAttack();
-            PlayerAttack();
+            if (currentEnemy != null)
+            {
+                PlayerAttack();
+                SpawnAxeAttack();
+            }
+            else
+            {
+                Debug.Log("Não há inimigos para atacar.");
+            }
         }
+        
     }
     void PlayerAttack()
     {

@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 
 [System.Serializable]
@@ -18,6 +19,7 @@ public class EnemySpawn : MonoBehaviour
     public GameObject spawnEnemyItem;
 
     public string spawnEnemyName;
+    public bool isCombatActive = false;
 
     private List<int> usedIndexes = new List<int>();
     private void Start()
@@ -27,9 +29,10 @@ public class EnemySpawn : MonoBehaviour
 
     void SpawnRandomEnemy()
     {
-        if (enemies.Count == 0)
+        if (usedIndexes.Count >= enemies.Count)
         {
             Debug.Log("Todos os inimigos foram derrotados!");
+            SceneManager.LoadScene("Boss");
             return;
         }
 
@@ -46,6 +49,7 @@ public class EnemySpawn : MonoBehaviour
         EnemySpawnData selectedEnemy = enemies[randomIndex];
 
         GameObject enemy = Instantiate(selectedEnemy.enemyPrefab, spawnPoint.position, Quaternion.identity) as GameObject;
+        isCombatActive = true;
         Enemy enemyScript = enemy.GetComponent<Enemy>();
         
         enemyScript.enemyData = selectedEnemy.enemyData;

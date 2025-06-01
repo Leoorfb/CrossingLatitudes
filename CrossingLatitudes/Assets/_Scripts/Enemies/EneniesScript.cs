@@ -14,3 +14,12 @@ public class EneniesScript : ScriptableObject
     public GameObject enemyItem;
 }
 
+[CreateAssetMenu(fileName = "New Boss", menuName = "Boss/Create a new Boss")]
+public class BossScript : ScriptableObject
+{
+    public string bossName;
+    public int maxHealth;
+    public int damage;
+    public string element;
+    
+}

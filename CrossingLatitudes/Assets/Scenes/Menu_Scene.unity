@@ -203,7 +203,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 06bed912faf952f48b4b9f5d9e9c8baf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  attack: {fileID: 0}
+  enemySpawn: {fileID: 1758447358}
+  currentEnemy: {fileID: 0}
   axePrefab: {fileID: 4721428992941614783, guid: 098a4685b7aead743879026c40693bb6, type: 3}
   enemyTarget: {fileID: 1758447357}
 --- !u!1 &169539534
@@ -1304,8 +1305,10 @@ MonoBehaviour:
   - enemyData: {fileID: 11400000, guid: 525cb6a5c2137e34d9448c291e4c6bb9, type: 2}
     enemyPrefab: {fileID: 2145912860716267303, guid: 4a5f1755a07468341b4232743da5e919, type: 3}
   spawnPoint: {fileID: 1758447357}
-  spawnEnemyName: 
+  attackScript: {fileID: 47046533}
   spawnEnemyItem: {fileID: 0}
+  spawnEnemyName: 
+  isCombatActive: 0
 --- !u!1001 &1779552429
 PrefabInstance:
   m_ObjectHideFlags: 0
