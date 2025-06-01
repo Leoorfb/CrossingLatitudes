@@ -12,10 +12,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e5b4d3a6feb5a824c94ac6bb6e573085, type: 3}
   m_Name: Skeleton_Knight
   m_EditorClassIdentifier: 
-  <Image>k__BackingField: {fileID: 0}
+  <Image>k__BackingField: {fileID: 21300000, guid: 8e6ab95d5e123ae4bb48b3070d9345e4, type: 3}
   <Prefab>k__BackingField: {fileID: 8427709408401677797, guid: a68a0d4d752b72c4ebb34d38c95a6949, type: 3}
   <MaxHealth>k__BackingField: 20
-  <AttackPower>k__BackingField: 5
+  <AttackPower>k__BackingField: 3
   <DefensePower>k__BackingField: 5
   rewardCard: {fileID: 11400000, guid: 44d6cdcc55b66d847a8c6893b602ea35, type: 2}
   element: 0

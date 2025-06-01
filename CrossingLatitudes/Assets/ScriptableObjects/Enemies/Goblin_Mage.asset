@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e5b4d3a6feb5a824c94ac6bb6e573085, type: 3}
   m_Name: Goblin_Mage
   m_EditorClassIdentifier: 
-  <Image>k__BackingField: {fileID: 0}
+  <Image>k__BackingField: {fileID: 21300000, guid: 0f03c24098dd03c42b4772c0ef28878f, type: 3}
   <Prefab>k__BackingField: {fileID: 724230930396300977, guid: 43cf0026f7580994782fa26c4d2fac25, type: 3}
   <MaxHealth>k__BackingField: 10
   <AttackPower>k__BackingField: 5

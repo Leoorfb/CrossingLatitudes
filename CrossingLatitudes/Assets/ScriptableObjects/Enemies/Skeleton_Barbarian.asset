@@ -12,10 +12,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e5b4d3a6feb5a824c94ac6bb6e573085, type: 3}
   m_Name: Skeleton_Barbarian
   m_EditorClassIdentifier: 
-  <Image>k__BackingField: {fileID: 0}
+  <Image>k__BackingField: {fileID: 21300000, guid: 8e6ab95d5e123ae4bb48b3070d9345e4, type: 3}
   <Prefab>k__BackingField: {fileID: 4288771111976272064, guid: 293343dbe77581d4ca39860963b805aa, type: 3}
   <MaxHealth>k__BackingField: 15
-  <AttackPower>k__BackingField: 6
+  <AttackPower>k__BackingField: 4
   <DefensePower>k__BackingField: 3
   rewardCard: {fileID: 11400000, guid: 44d6cdcc55b66d847a8c6893b602ea35, type: 2}
   element: 0

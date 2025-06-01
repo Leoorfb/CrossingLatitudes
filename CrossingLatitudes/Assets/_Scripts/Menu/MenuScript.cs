@@ -16,4 +16,10 @@ public class MenuScript : MonoBehaviour
         Application.Quit();
         Debug.Log("Saindo do jogo");
     }
+    
+    public void TryAgain()
+    {
+
+    }
+
 }
