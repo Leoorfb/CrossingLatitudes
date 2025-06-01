@@ -26,7 +26,7 @@ public class MatchSetupSystem : Singleton<MatchSetupSystem>
         EnemySystem.Instance.Setup(currentEnemies);
         CardSystem.Instance.Setup(heroData.Deck);
 
-        SetupReward(enemyDatas[0]);
+        SetupReward(currentEnemies[0]);
 
         DrawCardsGA drawCardsGA = new(3);
         ActionSystem.Instance.Perform(drawCardsGA);
