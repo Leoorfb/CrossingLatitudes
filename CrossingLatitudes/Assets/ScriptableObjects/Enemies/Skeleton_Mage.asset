@@ -1,0 +1,21 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e5b4d3a6feb5a824c94ac6bb6e573085, type: 3}
+  m_Name: Skeleton_Mage
+  m_EditorClassIdentifier: 
+  <Image>k__BackingField: {fileID: 0}
+  <Prefab>k__BackingField: {fileID: 8972323329341224917, guid: 62cdb1e92c9e3c64dbe8e4dbf4ddeb37, type: 3}
+  <MaxHealth>k__BackingField: 10
+  <AttackPower>k__BackingField: 15
+  <DefensePower>k__BackingField: 0
+  rewardCard: {fileID: 11400000, guid: c1445b45c0fd94648b3e0253fc6e7596, type: 2}
+  element: 0

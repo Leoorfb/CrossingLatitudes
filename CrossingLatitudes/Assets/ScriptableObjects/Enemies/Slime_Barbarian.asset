@@ -1,0 +1,21 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e5b4d3a6feb5a824c94ac6bb6e573085, type: 3}
+  m_Name: Slime_Barbarian
+  m_EditorClassIdentifier: 
+  <Image>k__BackingField: {fileID: 0}
+  <Prefab>k__BackingField: {fileID: 7542545401146870421, guid: 8d242d8942c3c2f42836de2727b17baa, type: 3}
+  <MaxHealth>k__BackingField: 8
+  <AttackPower>k__BackingField: 7
+  <DefensePower>k__BackingField: 1
+  rewardCard: {fileID: 11400000, guid: 44d6cdcc55b66d847a8c6893b602ea35, type: 2}
+  element: 0
