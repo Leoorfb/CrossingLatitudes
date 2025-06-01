@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 
 [System.Serializable]
@@ -14,10 +15,13 @@ public class EnemySpawn : MonoBehaviour
     
     public List<EnemySpawnData> enemies;
     public Transform spawnPoint;
-
-    public string spawnEnemyName;
+    public Attack attackScript;
     public GameObject spawnEnemyItem;
 
+    public string spawnEnemyName;
+    public bool isCombatActive = false;
+
+    private List<int> usedIndexes = new List<int>();
     private void Start()
     {
         SpawnRandomEnemy();
@@ -25,25 +29,56 @@ public class EnemySpawn : MonoBehaviour
 
     void SpawnRandomEnemy()
     {
-        if (enemies.Count == 0)
+        if (usedIndexes.Count >= enemies.Count)
         {
             Debug.Log("Todos os inimigos foram derrotados!");
+            SceneManager.LoadScene("Boss");
             return;
         }
 
-        int randomIndex = Random.Range(0, enemies.Count);
+
+        int randomIndex;
+        do
+        {
+            randomIndex = Random.Range(0, enemies.Count);
+        } while (usedIndexes.Contains(randomIndex));
+
+        usedIndexes.Add(randomIndex);
+
+        
         EnemySpawnData selectedEnemy = enemies[randomIndex];
 
         GameObject enemy = Instantiate(selectedEnemy.enemyPrefab, spawnPoint.position, Quaternion.identity) as GameObject;
+        isCombatActive = true;
         Enemy enemyScript = enemy.GetComponent<Enemy>();
-
+        
         enemyScript.enemyData = selectedEnemy.enemyData;
 
         spawnEnemyName = enemy.name;
         spawnEnemyItem = selectedEnemy.enemyData.enemyItem;
-
+        attackScript.currentEnemy = enemyScript; // faz com que o inimigo spawnado atualmente recebe o ataque
+        enemyScript.OnEnemyDefeated += OnEnemyDefeated;
         Debug.Log("Spawned Enemy: " + selectedEnemy.enemyData.enemyName + " with item: " + selectedEnemy.enemyData.enemyItem);
+
     }
 
+    private void HandleEnemyDefeated(EneniesScript defeatedEnemy)
+    {
+        
+        enemies.RemoveAll(e => e.enemyData == defeatedEnemy);
 
+        
+        SpawnRandomEnemy();
+    }
+    private void OnEnemyDefeated(EneniesScript enemyData)
+    {
+        Debug.Log(enemyData.enemyName + " foi derrotado.");
+
+        // Desinscreve do evento para evitar referência pendurada
+        attackScript.currentEnemy.OnEnemyDefeated -= OnEnemyDefeated;
+
+        // Spawn do próximo inimigo
+        SpawnRandomEnemy();
+    }
+    
 }
